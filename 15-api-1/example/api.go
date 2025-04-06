@@ -13,6 +13,7 @@ type API struct {
 
 func (api *API) Endpoints() {
 	api.router.Use(logMiddleware)
+	api.router.Use(headersMiddleware)
 	api.router.HandleFunc("/api/v1/books", api.books).Methods(http.MethodGet, http.MethodOptions)
 	api.router.HandleFunc("/api/v1/books", api.newBook).Methods(http.MethodPost, http.MethodGet)
 }
